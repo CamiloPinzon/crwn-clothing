@@ -3,7 +3,7 @@ import { signInWithGoolgePopup, createUserDocumentFromAuth } from '../../utils/f
 const SignIn = () => {
     const logGoolgeUser = async() =>{
         const {user}  = await signInWithGoolgePopup();
-        createUserDocumentFromAuth(user);
+        const userDocReference = await createUserDocumentFromAuth(user);
     }
     return(
         <div>
