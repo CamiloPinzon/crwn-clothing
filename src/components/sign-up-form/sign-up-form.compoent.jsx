@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
-
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+
+import FormInput from "../form-input/form-input.component";
 
 const defaultFormFields = {
     displayName: '',
@@ -33,7 +34,7 @@ const SignUpForm = () => {
             if(error.code === 'auth/email-already-in-use') {
                 alert('can not create user, email already in use');
             } else {
-                console.error(error);
+                console.error(error.code);
             }
         }
     }
@@ -47,14 +48,55 @@ const SignUpForm = () => {
         <Fragment>
             <h1>Sign up with your email and password</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="">Display name</label>
-                <input type="text" required="required" onChange={handleChange} name="displayName" value={displayName}/>
-                <label htmlFor="">E-mail</label>
-                <input type="email" required="required" onChange={handleChange} name="email" value={email}/>
-                <label htmlFor="">Password</label>
-                <input type="password" required="required" onChange={handleChange} name="password" value={password}/>
-                <label htmlFor="">Confirm Password</label>
-                <input type="password" required="required" onChange={handleChange} name="confirmPassword" value={confirmPassword}/>
+                <FormInput
+                    label='Display name'
+                    inputOptions = {
+                        {
+                            type: 'text',
+                            required: true,
+                            onChange: handleChange,
+                            name: 'displayName',
+                            value: displayName
+                        }
+                    }
+                    />
+                
+                <FormInput
+                    label='E-mail'
+                    inputOptions = {
+                        {
+                            type: 'email',
+                            required: true,
+                            onChange: handleChange,
+                            name: 'email',
+                            value: email
+                        }
+                    }/>
+                
+               <FormInput
+                    label='Password'
+                    inputOptions = {
+                        {
+                            type: "password",
+                            required: true,
+                            onChange: handleChange,
+                            name: "password",
+                            value: password
+                        }
+                    }/>
+                
+                <FormInput
+                    label='Confirm Password'
+                    inputOptions = {
+                        {
+                            type: 'password',
+                            required: true,
+                            onChange: handleChange,
+                            name: 'confirmPassword',
+                            value: confirmPassword
+                        }
+                    }/>
+
                 <button type="submit">Sign Up</button>
             </form>
         </Fragment>
