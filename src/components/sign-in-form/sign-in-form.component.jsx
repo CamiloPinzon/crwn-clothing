@@ -40,7 +40,8 @@ const SignInForm = () => {
         email,
         password
       );
-      setCurrentUser(user)
+      
+      setCurrentUser(user);
 
       resetFormFields();
     } catch (error) {
