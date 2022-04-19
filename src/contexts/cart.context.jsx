@@ -49,6 +49,7 @@ export const CartProvider = ({children}) =>{
 
     const removeItemFromCart = (cartItemToRemove) => {
         setCartItems(removeCartItem( cartItems, cartItemToRemove ));
+        console.log('test');
     };
 
     const value = {isCartOpen, setIsCartOpen, addItemToCart, removeItemFromCart, cartItems, cartCount};
