@@ -1,18 +1,18 @@
 import DirectoryItem from '../directory-item/directory-item.component';
 
-//import '../../assets/data/categories.json'
-import './directory.styles.scss';
+import { DirectoryContainer } from './directory.styles';
+import CATEGORIES_DATA from '../../assets/data/categories.data.json';
 
-const Directory = ({categories}) => {
+const Directory = () => {
     return(
-        <div className="directory-container">
+        <DirectoryContainer>
       {
-        categories.map((category) => (
+        CATEGORIES_DATA.map((category) => (
           <DirectoryItem key={category.id} category={category} />
         ))
       }
       
-    </div>
+    </DirectoryContainer>
     )
 }
 

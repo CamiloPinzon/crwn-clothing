@@ -32,20 +32,3 @@ export const EmptyMessage = styled.span`
   font-size: 18px;
   margin: 50px auto;
 `;
-
-/*.cart-dropdown-container {
-
-  .empty-message {
-  }
-
-  .cart-items {
-  }
-
-  button {
-  }
-}
-
-.displayElement {
-  display: none;
-}
-*/
