@@ -6,6 +6,9 @@ import {
 	createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase";
 
+import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
+
 import "./sign-up.styles.scss";
 
 const defaultFormFields = {
@@ -55,48 +58,51 @@ const SignUp = () => {
 	};
 
 	return (
-		<>
-			<h1>Sign Up</h1>
+		<div className="sign-up-container">
+			<h2>Don't have an account?</h2>
+			<span>Sing Up with your email and password</span>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="">Display Name</label>
-				<input
+				<FormInput
 					type="text"
-					required
+					required={true}
 					onChange={handleChage}
 					value={displayName}
 					name="displayName"
+					label="Display Name"
 				/>
 
-				<label htmlFor="">Email</label>
-				<input
+				<FormInput
 					type="email"
-					required
+					required={true}
 					onChange={handleChage}
 					value={email}
 					name="email"
+					label="Email"
 				/>
 
-				<label htmlFor="">Password</label>
-				<input
+				<FormInput
 					type="password"
 					required
 					onChange={handleChage}
 					value={password}
 					name="password"
+					label="Password"
 				/>
 
-				<label htmlFor="">Confirm Password</label>
-				<input
+				<FormInput
 					type="password"
 					required
 					onChange={handleChage}
 					value={confirmPassword}
 					name="confirmPassword"
+					label="Confirm Password"
 				/>
 
-				<button type="submit">Sign Up</button>
+				<Button type="submit" buttonType="default">
+					Sign Up
+				</Button>
 			</form>
-		</>
+		</div>
 	);
 };
 
