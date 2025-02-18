@@ -6,6 +6,9 @@ import {
 	GoogleAuthProvider,
 	createUserWithEmailAndPassword,
 	User,
+	signOut,
+	onAuthStateChanged,
+	NextOrObserver,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -72,4 +75,12 @@ export const signInAuthUserWithEmailAndPassword = async (
 ) => {
 	if (!email || !password) return;
 	return await signInWithEmailAndPassword(auth, email, password);
+};
+
+export const signOutUser = async () => {
+	return await signOut(auth);
+};
+
+export const onAuthStateChangedListener = (callback: NextOrObserver<User>) => {
+	onAuthStateChanged(auth, callback);
 };

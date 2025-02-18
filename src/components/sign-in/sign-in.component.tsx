@@ -16,7 +16,6 @@ const defaultFormFields = {
 	email: "",
 	password: "",
 };
-
 const SignIn = () => {
 	const [formFields, setFormFields] = useState(defaultFormFields);
 	const { email, password } = formFields;
@@ -29,11 +28,7 @@ const SignIn = () => {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		try {
-			const response = await signInAuthUserWithEmailAndPassword(
-				email,
-				password
-			);
-			console.log(response);
+			await signInAuthUserWithEmailAndPassword(email, password);
 		} catch (error) {
 			if (error instanceof FirebaseError) {
 				if (error.code === "auth/invalid-credential") {
@@ -46,8 +41,12 @@ const SignIn = () => {
 	};
 
 	const signInWithGoogle = async () => {
-		const { user } = await signInWithGooglePopup();
-		createUserDocumentFromAuth(user);
+		try {
+			const { user } = await signInWithGooglePopup();
+			await createUserDocumentFromAuth(user);
+		} catch (error) {
+			console.error("Error signing in with Google", error);
+		}
 	};
 
 	return (
